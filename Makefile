@@ -109,11 +109,6 @@ fclean: clean
 
 re: fclean all
 
-# utility
-norm:
-	@echo "$(LIGHTPURPLE)> Norminette Libft$(RESET)"
-	@norminette -R CheckDefine $(INCS) $(SRCS) $(SRCS_BONUS)
-
 # print
 print_clean:
 	@echo "\n$(RED)> Clean$(RESET)"
