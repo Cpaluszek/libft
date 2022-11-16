@@ -3,33 +3,63 @@
 #########################
 
 # Folders and names
-NAME		:=	libftprintf.a
-INCS		:=	ft_printf.h
-INCS_DIR	:=	inc
+NAME		:= libft.a
+INCS		:= libft.h
+OBJS_DIR	:= objs/
 
-SRCS_DIR	:=	srcs/
-SRCS		:=	ft_printf.c \
-				ft_pick_conversion.c \
-				ft_print_decimal.c \
-				ft_print_unsigned_int.c \
-				ft_print_string.c \
-				ft_print_pointer.c \
-				ft_print_size_t_base.c \
-				ft_print_hex.c
+SRCS		:= ft_isalpha.c \
+			   ft_isdigit.c \
+			   ft_isalnum.c \
+			   ft_isascii.c \
+			   ft_isprint.c \
+			   ft_toupper.c \
+			   ft_tolower.c \
+			   ft_atoi.c \
+			   ft_strdup.c \
+			   ft_strchr.c \
+			   ft_strrchr.c \
+			   ft_strlen.c \
+			   ft_strlcpy.c \
+			   ft_strlcat.c \
+			   ft_strncmp.c \
+			   ft_strnstr.c \
+			   ft_substr.c \
+			   ft_strjoin.c \
+			   ft_strtrim.c \
+			   ft_split.c \
+			   ft_itoa.c \
+			   ft_strmapi.c \
+			   ft_striteri.c \
+			   ft_calloc.c \
+			   ft_bzero.c \
+			   ft_memset.c \
+			   ft_memcpy.c \
+			   ft_memmove.c \
+			   ft_memchr.c \
+			   ft_memcmp.c \
+			   ft_putchar_fd.c \
+			   ft_putstr_fd.c \
+			   ft_putendl_fd.c \
+			   ft_putnbr_fd.c
 
-LIBFT_A		:=	libft.a
-LIBFT_DIR	:=	libft/
+SRCS_BONUS :=  ft_lstnew_bonus.c \
+			   ft_lstsize_bonus.c \
+			   ft_lstclear_bonus.c \
+			   ft_lstadd_back_bonus.c \
+			   ft_lstadd_front_bonus.c \
+			   ft_lstlast_bonus.c \
+			   ft_lstdelone_bonus.c \
+			   ft_lstiter_bonus.c \
+			   ft_lstmap_bonus.c
 
-OBJS_DIR	:=	objs/
-OBJS		:=	$(SRCS:%.c=$(OBJS_DIR)%.o)
+OBJS		:= $(SRCS:%.c=$(OBJS_DIR)%.o)
 
-# SRCS_BONUS := 
-#OBJS_BONUS	:= $(SRCS_BONUS:%.c=$(OBJS_DIR)%.o)
+OBJS_BONUS	:= $(SRCS_BONUS:%.c=$(OBJS_DIR)%.o)
 
 # Compiler options
-CC			:=	gcc
-CC_FLAGS	:=	-Wextra -Werror -Wall
-DEBUG_FLAG	:=	-fsanitize=address
+CC			:= gcc
+CC_FLAGS	:= -Wextra -Werror -Wall
+DEBUG_FLAG	:= -fsanitize=address
 
 # define standard colors
 _END		:=	\x1b[0m
@@ -49,34 +79,36 @@ _WHITE		:=	\x1b[37m
 # 		RULES			#
 #########################
 
-all: build_lib $(NAME)
+all: $(NAME)
 
-$(NAME): build_lib $(OBJS)
-	@cp libft/libft.a $(NAME)
-	@ar -rcu $(NAME) $(OBJS)
+$(NAME): $(OBJS)
+	@ar rc $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo "> ft_printf Done !\n"
+	@echo "> libft Done!\n"
 
-build_lib: $(LIBFT_DIR)
-	@$(MAKE) -C $(LIBFT_DIR)
-
-#$(OBJS): $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(INCS_DIR) $(LIBFT_DIR) Makefile
-$(OBJS): $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(LIBFT_DIR) $(INCS_DIR) Makefile
+$(OBJS): $(OBJS_DIR)%.o: %.c $(INCS) Makefile
 	@mkdir -p $(@D)
 	@echo "$(_GREEN)compiling: $<$(_END)"
-	@$(CC) $(CC_FLAGS) -I$(INCS_DIR) -I$(LIBFT_DIR) -c $< -o $@
+	@$(CC) $(CC_FLAGS) -c $< -o $@
+
+bonus:	$(OBJS) $(OBJS_BONUS)
+	@ar rc $(NAME) $(OBJS) $(OBJS_BONUS)
+	@ranlib $(NAME)
+	@echo " Bonus Done!"
+
+$(OBJS_BONUS): $(OBJS_DIR)%.o: %.c $(INCS) Makefile
+	@mkdir -p $(@D)
+	@echo "$(_YELLOW)compiling: $<$(_END)"
+	@$(CC) $(CC_FLAGS) -c $< -o $@
 
 # clean commands
 clean:
-	@$(MAKE) clean -C $(LIBFT_DIR)
 	@rm -rf $(OBJS_DIR)
 
 fclean: clean
 	@echo "remove $(NAME)"
 	@rm -rf $(NAME)
-	@echo "remove $(LIBFT_DIR)$(LIBFT_A)"
-	@rm -rf "$(LIBFT_DIR)$(LIBFT_A)"
 
 re: fclean all
 
-.PHONY: all clean fclean re norm print_clean test
+.PHONY: all clean fclean re norm print_clean bonus
