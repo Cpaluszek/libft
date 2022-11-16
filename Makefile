@@ -3,114 +3,80 @@
 #########################
 
 # Folders and names
-NAME		:= libft.a
-INCS		:= libft.h
-OBJS_DIR	:= objs/
+NAME		:=	libftprintf.a
+INCS		:=	ft_printf.h
+INCS_DIR	:=	inc
 
-SRCS		:= ft_isalpha.c \
-			   ft_isdigit.c \
-			   ft_isalnum.c \
-			   ft_isascii.c \
-			   ft_isprint.c \
-			   ft_toupper.c \
-			   ft_tolower.c \
-			   ft_atoi.c \
-			   ft_strdup.c \
-			   ft_strchr.c \
-			   ft_strrchr.c \
-			   ft_strlen.c \
-			   ft_strlcpy.c \
-			   ft_strlcat.c \
-			   ft_strncmp.c \
-			   ft_strnstr.c \
-			   ft_substr.c \
-			   ft_strjoin.c \
-			   ft_strtrim.c \
-			   ft_split.c \
-			   ft_itoa.c \
-			   ft_strmapi.c \
-			   ft_striteri.c \
-			   ft_calloc.c \
-			   ft_bzero.c \
-			   ft_memset.c \
-			   ft_memcpy.c \
-			   ft_memmove.c \
-			   ft_memchr.c \
-			   ft_memcmp.c \
-			   ft_putchar_fd.c \
-			   ft_putstr_fd.c \
-			   ft_putendl_fd.c \
-			   ft_putnbr_fd.c
+SRCS_DIR	:=	srcs/
+SRCS		:=	ft_printf.c \
+				ft_pick_conversion.c \
+				ft_print_decimal.c \
+				ft_print_unsigned_int.c \
+				ft_print_string.c \
+				ft_print_pointer.c \
+				ft_print_size_t_base.c \
+				ft_print_hex.c
 
-SRCS_BONUS :=  ft_lstnew_bonus.c \
-			   ft_lstsize_bonus.c \
-			   ft_lstclear_bonus.c \
-			   ft_lstadd_back_bonus.c \
-			   ft_lstadd_front_bonus.c \
-			   ft_lstlast_bonus.c \
-			   ft_lstdelone_bonus.c \
-			   ft_lstiter_bonus.c \
-			   ft_lstmap_bonus.c
+LIBFT_A		:=	libft.a
+LIBFT_DIR	:=	libft/
 
-OBJS		:= $(SRCS:%.c=$(OBJS_DIR)%.o)
+OBJS_DIR	:=	objs/
+OBJS		:=	$(SRCS:%.c=$(OBJS_DIR)%.o)
 
-OBJS_BONUS	:= $(SRCS_BONUS:%.c=$(OBJS_DIR)%.o)
+# SRCS_BONUS := 
+#OBJS_BONUS	:= $(SRCS_BONUS:%.c=$(OBJS_DIR)%.o)
 
 # Compiler options
-CC			:= gcc
-CC_FLAGS	:= -Wextra -Werror -Wall
-DEBUG_FLAG	:= -fsanitize=address
+CC			:=	gcc
+CC_FLAGS	:=	-Wextra -Werror -Wall
+DEBUG_FLAG	:=	-fsanitize=address
 
 # define standard colors
-BLACK		:= $(shell tput -Txterm setaf 0)
-RED			:= $(shell tput -Txterm setaf 1)
-GREEN		:= $(shell tput -Txterm setaf 2)
-YELLOW		:= $(shell tput -Txterm setaf 3)
-LIGHTPURPLE	:= $(shell tput -Txterm setaf 4)
-PURPLE		:= $(shell tput -Txterm setaf 5)
-BLUE		:= $(shell tput -Txterm setaf 6)
-WHITE		:= $(shell tput -Txterm setaf 7)
-RESET		:= $(shell tput -Txterm sgr0)
+_END		:=	\x1b[0m
+_BOLD		:=	\x1b[1m
+_UNDER		:=	\x1b[4m
+_REV		:=	\x1b[7m
+_GREY		:=	\x1b[30m
+_RED		:=	\x1b[31m
+_GREEN		:=	\x1b[32m
+_YELLOW		:=	\x1b[33m
+_BLUE		:=	\x1b[34m
+_PURPLE		:=	\x1b[35m
+_CYAN		:=	\x1b[36m
+_WHITE		:=	\x1b[37m
 
 #########################
 # 		RULES			#
 #########################
 
-all: $(NAME)
+all: build_lib $(NAME)
 
-$(NAME): $(OBJS)
-	@ar rc $(NAME) $(OBJS)
+$(NAME): build_lib $(OBJS)
+	@cp libft/libft.a $(NAME)
+	@ar -rcu $(NAME) $(OBJS)
 	@ranlib $(NAME)
-	@echo " Done!"
+	@echo "> ft_printf Done !\n"
 
-$(OBJS): $(OBJS_DIR)%.o: %.c $(INCS) Makefile
+build_lib: $(LIBFT_DIR)
+	@$(MAKE) -C $(LIBFT_DIR)
+
+#$(OBJS): $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(INCS_DIR) $(LIBFT_DIR) Makefile
+$(OBJS): $(OBJS_DIR)%.o: $(SRCS_DIR)%.c $(LIBFT_DIR) $(INCS_DIR) Makefile
 	@mkdir -p $(@D)
-	@echo "$(GREEN)compiling: $<$(RESET)"
-	@$(CC) $(CC_FLAGS) -c $< -o $@
-
-bonus:	$(OBJS) $(OBJS_BONUS)
-	@ar rc $(NAME) $(OBJS) $(OBJS_BONUS)
-	@ranlib $(NAME)
-	@echo " Bonus Done!"
-
-$(OBJS_BONUS): $(OBJS_DIR)%.o: %.c $(INCS) Makefile
-	@mkdir -p $(@D)
-	@echo "$(YELLOW)compiling: $<$(RESET)"
-	@$(CC) $(CC_FLAGS) -c $< -o $@
+	@echo "$(_GREEN)compiling: $<$(_END)"
+	@$(CC) $(CC_FLAGS) -I$(INCS_DIR) -I$(LIBFT_DIR) -c $< -o $@
 
 # clean commands
-clean: print_clean
-	@echo "remove all objects files"
+clean:
+	@$(MAKE) clean -C $(LIBFT_DIR)
 	@rm -rf $(OBJS_DIR)
 
 fclean: clean
 	@echo "remove $(NAME)"
 	@rm -rf $(NAME)
+	@echo "remove $(LIBFT_DIR)$(LIBFT_A)"
+	@rm -rf "$(LIBFT_DIR)$(LIBFT_A)"
 
 re: fclean all
 
-# print
-print_clean:
-	@echo "\n$(RED)> Clean$(RESET)"
-
-.PHONY: all clean fclean re norm print_clean bonus
+.PHONY: all clean fclean re norm print_clean test
