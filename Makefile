@@ -4,57 +4,61 @@
 
 # Folders and names
 NAME		:= libft.a
-INCS		:= libft.h
-OBJS_DIR	:= objs/
 
-SRCS		:= ft_isalpha.c \
-			   ft_isdigit.c \
-			   ft_isalnum.c \
-			   ft_isascii.c \
-			   ft_isprint.c \
-			   ft_toupper.c \
-			   ft_tolower.c \
-			   ft_atoi.c \
-			   ft_strdup.c \
-			   ft_strchr.c \
-			   ft_strrchr.c \
-			   ft_strlen.c \
-			   ft_strlcpy.c \
-			   ft_strlcat.c \
-			   ft_strncmp.c \
-			   ft_strnstr.c \
-			   ft_substr.c \
-			   ft_strjoin.c \
-			   ft_strtrim.c \
-			   ft_split.c \
-			   ft_itoa.c \
-			   ft_strmapi.c \
-			   ft_striteri.c \
-			   ft_calloc.c \
-			   ft_bzero.c \
-			   ft_memset.c \
-			   ft_memcpy.c \
-			   ft_memmove.c \
-			   ft_memchr.c \
-			   ft_memcmp.c \
-			   ft_putchar_fd.c \
-			   ft_putstr_fd.c \
-			   ft_putendl_fd.c \
-			   ft_putnbr_fd.c
+INC_DIR		:= inc/
+INC			:= libft.h
 
-SRCS_BONUS :=  ft_lstnew_bonus.c \
-			   ft_lstsize_bonus.c \
-			   ft_lstclear_bonus.c \
-			   ft_lstadd_back_bonus.c \
-			   ft_lstadd_front_bonus.c \
-			   ft_lstlast_bonus.c \
-			   ft_lstdelone_bonus.c \
-			   ft_lstiter_bonus.c \
-			   ft_lstmap_bonus.c
+SRC_DIR		:= src/
+SRC 		:= $(shell find $(SRC_DIR) -type f -name "*.c" $(DISABLED))
+# SRC			:= checker/ft_isalpha.c \
+# 			   checker/ft_isdigit.c \
+# 			   checker/ft_isalnum.c \
+# 			   checker/ft_isascii.c \
+# 			   checker/ft_isprint.c \
+# 			   str/ft_toupper.c \
+# 			   str/ft_tolower.c \
+# 			   str/ft_atoi.c \
+# 			   str/ft_strdup.c \
+# 			   str/ft_strchr.c \
+# 			   str/ft_strrchr.c \
+# 			   str/ft_strlen.c \
+# 			   str/ft_strlcpy.c \
+# 			   str/ft_strlcat.c \
+# 			   str/ft_strncmp.c \
+# 			   str/ft_strnstr.c \
+# 			   str/ft_substr.c \
+# 			   str/ft_strjoin.c \
+# 			   str/ft_strtrim.c \
+# 			   str/ft_split.c \
+# 			   str/ft_itoa.c \
+# 			   str/ft_strmapi.c \
+# 			   str/ft_striteri.c \
+# 			   mem/ft_calloc.c \
+# 			   mem/ft_bzero.c \
+# 			   mem/ft_memset.c \
+# 			   mem/ft_memcpy.c \
+# 			   mem/ft_memmove.c \
+# 			   mem/ft_memchr.c \
+# 			   mem/ft_memcmp.c \
+# 			   io/ft_putchar_fd.c \
+# 			   io/ft_putstr_fd.c \
+# 			   io/ft_putendl_fd.c \
+# 			   io/ft_putnbr_fd.c
 
-OBJS		:= $(SRCS:%.c=$(OBJS_DIR)%.o)
+# SRC_BONUS 	:= lst/ft_lstnew_bonus.c \
+# 			   lst/ft_lstsize_bonus.c \
+# 			   lst/ft_lstclear_bonus.c \
+# 			   lst/ft_lstadd_back_bonus.c \
+# 			   lst/ft_lstadd_front_bonus.c \
+# 			   lst/ft_lstlast_bonus.c \
+# 			   lst/ft_lstdelone_bonus.c \
+# 			   lst/ft_lstiter_bonus.c \
+# 			   lst/ft_lstmap_bonus.c
 
-OBJS_BONUS	:= $(SRCS_BONUS:%.c=$(OBJS_DIR)%.o)
+OBJ_DIR		:= build/
+OBJ			:= $(SRC:%.c=$(OBJ_DIR)%.o)
+
+# OBJ_BONUS	:= $(SRC_BONUS:%.c=$(OBJ_DIR)%.o)
 
 # Compiler options
 CC			:= gcc
@@ -81,29 +85,32 @@ _WHITE		:=	\x1b[37m
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@ar rc $(NAME) $(OBJS)
+echo:
+	echo $(SRC)
+
+$(NAME): $(OBJ)
+	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
 	@echo "> libft Done!\n"
 
-$(OBJS): $(OBJS_DIR)%.o: %.c $(INCS) Makefile
+$(OBJ): $(OBJ_DIR)%.o: %.c $(INC_DIR) Makefile
 	@mkdir -p $(@D)
 	@echo "$(_GREEN)compiling: $<$(_END)"
-	@$(CC) $(CC_FLAGS) -c $< -o $@
+	@$(CC) $(CC_FLAGS) -I$(INC_DIR) -c $< -o $@
 
-bonus:	$(OBJS) $(OBJS_BONUS)
-	@ar rc $(NAME) $(OBJS) $(OBJS_BONUS)
-	@ranlib $(NAME)
-	@echo " Bonus Done!"
+# bonus:	$(OBJ) $(OBJ_BONUS)
+# 	@ar rc $(NAME) $(OBJ) $(OBJ_BONUS)
+# 	@ranlib $(NAME)
+# 	@echo " Bonus Done!"
 
-$(OBJS_BONUS): $(OBJS_DIR)%.o: %.c $(INCS) Makefile
-	@mkdir -p $(@D)
-	@echo "$(_YELLOW)compiling: $<$(_END)"
-	@$(CC) $(CC_FLAGS) -c $< -o $@
+# $(OBJ_BONUS): $(OBJ_DIR)%.o: %.c $(INC) Makefile
+# 	@mkdir -p $(@D)
+# 	@echo "$(_YELLOW)compiling: $<$(_END)"
+# 	@$(CC) $(CC_FLAGS) -c $< -o $@
 
 # clean commands
 clean:
-	@rm -rf $(OBJS_DIR)
+	@rm -rf $(OBJ_DIR)
 
 fclean: clean
 	@echo "remove $(NAME)"
@@ -111,4 +118,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re norm print_clean bonus
+.PHONY: all clean fclean re
