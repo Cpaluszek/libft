@@ -6,14 +6,13 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:49:25 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/11/08 14:49:29 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/11/26 11:57:06 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static long long int	travel_digits(const char *nptr, int sign);
-static int				ft_iswhitespace(const int c);
+static long long int	ft_travel_digits(const char *nptr, int sign);
 
 int	ft_atoi(const char *nptr)
 {
@@ -22,7 +21,7 @@ int	ft_atoi(const char *nptr)
 
 	i = 0;
 	sign = 1;
-	while (nptr[i] && ft_iswhitespace(nptr[i]))
+	while (nptr[i] && ft_isspace(nptr[i]))
 		i++;
 	if (nptr[i] == '-')
 	{
@@ -31,10 +30,10 @@ int	ft_atoi(const char *nptr)
 	}
 	else if (nptr[i] == '+')
 		i++;
-	return ((int)travel_digits(nptr + i, sign));
+	return ((int)ft_travel_digits(nptr + i, sign));
 }
 
-static long long int	travel_digits(const char *nptr, int sign)
+static long long int	ft_travel_digits(const char *nptr, int sign)
 {
 	long long int	res;
 	int				i;
@@ -50,10 +49,4 @@ static long long int	travel_digits(const char *nptr, int sign)
 		res = res * 10 + (nptr[i++] - '0');
 	}
 	return (res * sign);
-}
-
-static int	ft_iswhitespace(const int c)
-{
-	return (c == ' ' || c == '\t' || c == '\n' || c == '\r' \
-			|| c == '\v' || c == '\f');
 }

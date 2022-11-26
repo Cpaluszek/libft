@@ -6,14 +6,14 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/11 11:39:04 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/11/14 16:35:01 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/11/26 11:57:22 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	count_words(char const *s, char c);
-static char		**split_strings(char const *s, char c, size_t count);
+static size_t	ft_count_words(char const *s, char c);
+static char		**ft_split_strings(char const *s, char c, size_t count);
 static char		**ft_freeall(char **s);
 
 char	**ft_split(char const *s, char c)
@@ -22,11 +22,11 @@ char	**ft_split(char const *s, char c)
 
 	if (s == NULL)
 		return (NULL);
-	strings_count = count_words(s, c);
-	return (split_strings(s, c, strings_count));
+	strings_count = ft_count_words(s, c);
+	return (ft_split_strings(s, c, strings_count));
 }
 
-static size_t	count_words(char const *s, char c)
+static size_t	ft_count_words(char const *s, char c)
 {
 	size_t	i;
 	size_t	count;
@@ -47,7 +47,7 @@ static size_t	count_words(char const *s, char c)
 	return (count);
 }
 
-static char	**split_strings(char const *s, char c, size_t count)
+static char	**ft_split_strings(char const *s, char c, size_t count)
 {
 	char	**split;
 	size_t	i;

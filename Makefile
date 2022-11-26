@@ -14,6 +14,7 @@ SRC			:= checker/ft_isalpha.c \
  			   checker/ft_isalnum.c \
  			   checker/ft_isascii.c \
  			   checker/ft_isprint.c \
+ 			   checker/ft_isspace.c \
  			   str/ft_toupper.c \
  			   str/ft_tolower.c \
  			   str/ft_atoi.c \
@@ -91,6 +92,7 @@ $(OBJ): $(OBJ_DIR)%.o: $(SRC_DIR)%.c $(INC_DIR) Makefile
 
 # clean commands
 clean:
+	@echo "remove $(OBJ_DIR)"
 	@rm -rf $(OBJ_DIR)
 
 fclean: clean
