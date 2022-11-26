@@ -3,63 +3,71 @@
 #########################
 
 # Folders and names
-NAME		:= libft.a
+NAME		:= 	libft.a
 
-INC_DIR		:= inc/
-INC			:= libft.h
+INC_DIR		:= 	inc/
+INC			:= 	libft.h
 
-SRC_DIR		:= src/
-SRC			:= checker/ft_isalpha.c \
- 			   checker/ft_isdigit.c \
- 			   checker/ft_isalnum.c \
- 			   checker/ft_isascii.c \
- 			   checker/ft_isprint.c \
- 			   checker/ft_isspace.c \
- 			   str/ft_toupper.c \
- 			   str/ft_tolower.c \
- 			   str/ft_atoi.c \
- 			   str/ft_strdup.c \
- 			   str/ft_strchr.c \
- 			   str/ft_strrchr.c \
- 			   str/ft_strlen.c \
- 			   str/ft_strlcpy.c \
- 			   str/ft_strlcat.c \
- 			   str/ft_strncmp.c \
- 			   str/ft_strnstr.c \
- 			   str/ft_substr.c \
- 			   str/ft_strjoin.c \
- 			   str/ft_strtrim.c \
- 			   str/ft_split.c \
- 			   str/ft_itoa.c \
- 			   str/ft_strmapi.c \
- 			   str/ft_striteri.c \
- 			   mem/ft_calloc.c \
- 			   mem/ft_bzero.c \
- 			   mem/ft_memset.c \
- 			   mem/ft_memcpy.c \
- 			   mem/ft_memmove.c \
- 			   mem/ft_memchr.c \
- 			   mem/ft_memcmp.c \
- 			   io/ft_putchar_fd.c \
- 			   io/ft_putstr_fd.c \
- 			   io/ft_putendl_fd.c \
- 			   io/ft_putnbr_fd.c \
-			   lst/ft_lstnew.c \
- 			   lst/ft_lstsize.c \
- 			   lst/ft_lstclear.c \
- 			   lst/ft_lstadd_back.c \
- 			   lst/ft_lstadd_front.c \
- 			   lst/ft_lstlast.c \
- 			   lst/ft_lstdelone.c \
- 			   lst/ft_lstiter.c \
- 			   lst/ft_lstmap.c
+SRC_DIR		:= 	src/
+SRC			:= 	checker/ft_isalpha.c \
+ 			   	checker/ft_isdigit.c \
+ 			   	checker/ft_isalnum.c \
+ 			   	checker/ft_isascii.c \
+ 			   	checker/ft_isprint.c \
+ 			   	checker/ft_isspace.c \
+ 			   	str/ft_toupper.c \
+ 			   	str/ft_tolower.c \
+ 			   	str/ft_atoi.c \
+ 			   	str/ft_strdup.c \
+ 			   	str/ft_strchr.c \
+ 			   	str/ft_strrchr.c \
+ 			   	str/ft_strlen.c \
+ 			   	str/ft_strlcpy.c \
+ 			   	str/ft_strlcat.c \
+ 			   	str/ft_strncmp.c \
+ 			   	str/ft_strnstr.c \
+ 			   	str/ft_substr.c \
+ 			   	str/ft_strjoin.c \
+ 			   	str/ft_strtrim.c \
+ 			   	str/ft_split.c \
+ 			   	str/ft_itoa.c \
+ 			   	str/ft_strmapi.c \
+ 			   	str/ft_striteri.c \
+ 			   	mem/ft_calloc.c \
+ 			   	mem/ft_bzero.c \
+ 			   	mem/ft_memset.c \
+ 			   	mem/ft_memcpy.c \
+ 			   	mem/ft_memmove.c \
+ 			   	mem/ft_memchr.c \
+ 			   	mem/ft_memcmp.c \
+ 			   	io/ft_putchar_fd.c \
+ 			   	io/ft_putstr_fd.c \
+ 			   	io/ft_putendl_fd.c \
+ 			   	io/ft_putnbr_fd.c \
+				io/ft_printf/ft_pick_conversion.c \
+				io/ft_printf/ft_print_decimal.c \
+				io/ft_printf/ft_print_hex.c \
+				io/ft_printf/ft_print_pointer.c \
+				io/ft_printf/ft_print_size_t_base.c \
+				io/ft_printf/ft_print_string.c \
+				io/ft_printf/ft_print_unsigned_int.c \
+				io/ft_printf/ft_printf.c \
+				lst/ft_lstnew.c \
+ 				lst/ft_lstsize.c \
+ 			   	lst/ft_lstclear.c \
+ 			   	lst/ft_lstadd_back.c \
+ 			   	lst/ft_lstadd_front.c \
+ 			   	lst/ft_lstlast.c \
+ 			   	lst/ft_lstdelone.c \
+ 			   	lst/ft_lstiter.c \
+ 			   	lst/ft_lstmap.c
 
-OBJ_DIR		:= build/
-OBJ			:= $(SRC:%.c=$(OBJ_DIR)%.o)
+OBJ_DIR		:=	build/
+OBJ			:=	$(SRC:%.c=$(OBJ_DIR)%.o)
 
 # Compiler options
-CC			:= gcc
-CC_FLAGS	:= -Wextra -Werror -Wall
+CC			:=	gcc
+CC_FLAGS	:=	-Wextra -Werror -Wall
 
 # define standard colors
 _END		:=	\x1b[0m
