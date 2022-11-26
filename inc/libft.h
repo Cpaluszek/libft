@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:23:15 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/11/26 14:59:54 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/11/26 15:55:43 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,9 @@
 # include <unistd.h>
 # include <stdarg.h>
 # include <limits.h>
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 32
+# endif
 # define NULL_STR "(null)"
 # define HEX_BASE_LOWER "0123456789abcdef"
 # define HEX_BASE_UPPER "0123456789ABCDEF"
@@ -80,6 +83,9 @@ int		ft_print_upper_hex(size_t nb);
 int		ft_print_unsigned_int(unsigned int nb);
 int		ft_print_size_t_base(size_t nb, char *base, size_t base_len);
 void	ft_putstr_n_fd(const char *s, size_t n, int fd);
+
+/*	Get Next Line */
+char	*get_next_line(int fd);
 
 /* lists	*/
 t_list	*ft_lstnew(void *content);
