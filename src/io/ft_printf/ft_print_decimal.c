@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/15 13:27:03 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/11/26 15:51:24 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/11/27 11:14:00 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ int	ft_print_decimal(const int nb)
 	len = 0;
 	if (nb >= 0)
 		return (ft_print_unsigned_int(nb));
-	write(1, "-", STDOUT_FILENO);
+	write(STDOUT_FILENO, "-", 1);
 	return (1 + ft_print_unsigned_int(-nb));
 }
