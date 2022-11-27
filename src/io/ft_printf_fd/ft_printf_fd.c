@@ -1,24 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_decimal.c                                 :+:      :+:    :+:   */
+/*   ft_printf_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 13:27:03 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/11/27 11:15:35 by cpalusze         ###   ########.fr       */
+/*   Created: 2022/11/27 12:23:03 by cpalusze          #+#    #+#             */
+/*   Updated: 2022/11/27 12:23:06 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_print_decimal(const int nb)
+int	ft_printf_fd(int fd, const char *input, ...)
 {
-	int				len;
+	int		i;
+	int		char_count;
+	va_list	args;
 
-	len = 0;
-	if (nb >= 0)
-		return (ft_print_unsigned_int(nb));
-	write(STDOUT_FILENO, "-", 1);
-	return (1 + ft_print_unsigned_int(-nb));
+	va_start(args, input);
+	i = 0;
+	char_count = ft_strlen(input);
+	if (write(fd, 0, 0) == -1)
+		return (-1);
+	while (input[i])
+	{
+		if (input[i] == '%')
+			char_count += ft_pick_conversion_fd(fd, input[++i], args) - 2;
+		else
+			ft_putchar_fd(input[i], fd);
+		if (input[i])
+			i++;
+	}
+	va_end(args);
+	return (char_count);
 }

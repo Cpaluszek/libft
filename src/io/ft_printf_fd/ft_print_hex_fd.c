@@ -1,24 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_decimal.c                                 :+:      :+:    :+:   */
+/*   ft_print_hex_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 13:27:03 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/11/27 11:15:35 by cpalusze         ###   ########.fr       */
+/*   Created: 2022/11/27 12:00:42 by cpalusze          #+#    #+#             */
+/*   Updated: 2022/11/27 12:06:18 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_print_decimal(const int nb)
+int	ft_print_lower_hex_fd(size_t nb, int fd)
 {
-	int				len;
+	size_t	base_len;
 
-	len = 0;
-	if (nb >= 0)
-		return (ft_print_unsigned_int(nb));
-	write(STDOUT_FILENO, "-", 1);
-	return (1 + ft_print_unsigned_int(-nb));
+	base_len = ft_strlen(HEX_BASE_LOWER);
+	return (ft_print_size_t_base_fd(nb, HEX_BASE_LOWER, base_len, fd));
+}
+
+int	ft_print_upper_hex_fd(size_t nb, int fd)
+{
+	size_t	base_len;
+
+	base_len = ft_strlen(HEX_BASE_UPPER);
+	return (ft_print_size_t_base_fd(nb, HEX_BASE_UPPER, base_len, fd));
 }

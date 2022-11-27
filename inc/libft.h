@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 14:23:15 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/11/26 15:55:43 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/11/27 12:13:58 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,17 @@ int		ft_print_lower_hex(size_t nb);
 int		ft_print_upper_hex(size_t nb);
 int		ft_print_unsigned_int(unsigned int nb);
 int		ft_print_size_t_base(size_t nb, char *base, size_t base_len);
-void	ft_putstr_n_fd(const char *s, size_t n, int fd);
+
+/*	ft_printf_fd	*/
+int		ft_printf_fd(int fd, const char *input, ...);
+int		ft_pick_conversion_fd(int fd, const char c, va_list args);
+int		ft_print_decimal_fd(const int nb, int fd);
+int		ft_print_string_fd(const char *str, int fd);
+int		ft_print_pointer_fd(size_t ptr, int fd);
+int		ft_print_lower_hex_fd(size_t nb, int fd);
+int		ft_print_upper_hex_fd(size_t nb, int fd);
+int		ft_print_unsigned_int_fd(unsigned int nb, int fd);
+int		ft_print_size_t_base_fd(size_t nb, char *base, size_t b_len, int fd);
 
 /*	Get Next Line */
 char	*get_next_line(int fd);

@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_print_decimal.c                                 :+:      :+:    :+:   */
+/*   ft_print_string_fd.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/15 13:27:03 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/11/27 11:15:35 by cpalusze         ###   ########.fr       */
+/*   Created: 2022/11/15 13:29:07 by cpalusze          #+#    #+#             */
+/*   Updated: 2022/11/27 12:03:06 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_print_decimal(const int nb)
+int	ft_print_string_fd(const char *str, int fd)
 {
-	int				len;
-
-	len = 0;
-	if (nb >= 0)
-		return (ft_print_unsigned_int(nb));
-	write(STDOUT_FILENO, "-", 1);
-	return (1 + ft_print_unsigned_int(-nb));
+	if (str == NULL)
+	{
+		ft_putstr_fd(NULL_STR, fd);
+		return ((int)ft_strlen(NULL_STR));
+	}
+	ft_putstr_fd(str, fd);
+	return ((int)ft_strlen(str));
 }
