@@ -15,23 +15,23 @@
 int	ft_printf(const char *input, ...)
 {
 	int		i;
-	int		printed_char_count;
+	int		count;
 	va_list	args;
 
 	va_start(args, input);
 	i = 0;
-	printed_char_count = ft_strlen(input);
+	count = ft_strlen(input);
 	if (write(STDOUT_FILENO, 0, 0) == -1)
 		return (-1);
 	while (input[i])
 	{
 		if (input[i] == '%')
-			printed_char_count += ft_pick_conversion(input[++i], args) - 2;
+			count += ft_pick_conversion_fd(STDOUT_FILENO, input[++i], args) - 2;
 		else
 			ft_putchar_fd(input[i], STDOUT_FILENO);
 		if (input[i])
 			i++;
 	}
 	va_end(args);
-	return (printed_char_count);
+	return (count);
 }

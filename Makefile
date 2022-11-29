@@ -44,14 +44,6 @@ SRC			:= 	checker/ft_isalpha.c \
  			   	io/ft_putstr_fd.c \
  			   	io/ft_putendl_fd.c \
  			   	io/ft_putnbr_fd.c \
-				io/ft_printf/ft_pick_conversion.c \
-				io/ft_printf/ft_print_decimal.c \
-				io/ft_printf/ft_print_hex.c \
-				io/ft_printf/ft_print_pointer.c \
-				io/ft_printf/ft_print_size_t_base.c \
-				io/ft_printf/ft_print_string.c \
-				io/ft_printf/ft_print_unsigned_int.c \
-				io/ft_printf/ft_printf.c \
 				io/ft_printf_fd/ft_pick_conversion_fd.c \
 				io/ft_printf_fd/ft_print_decimal_fd.c \
 				io/ft_printf_fd/ft_print_hex_fd.c \
@@ -70,6 +62,15 @@ SRC			:= 	checker/ft_isalpha.c \
  			   	lst/ft_lstdelone.c \
  			   	lst/ft_lstiter.c \
  			   	lst/ft_lstmap.c
+
+#io/ft_printf/ft_pick_conversion.c \
+#io/ft_printf/ft_print_decimal.c \
+#io/ft_printf/ft_print_hex.c \
+#io/ft_printf/ft_print_pointer.c \
+#io/ft_printf/ft_print_size_t_base.c \
+#io/ft_printf/ft_print_string.c \
+#io/ft_printf/ft_print_unsigned_int.c \
+#io/ft_printf/ft_printf.c \
 
 OBJ_DIR		:=	build/
 OBJ			:=	$(SRC:%.c=$(OBJ_DIR)%.o)
