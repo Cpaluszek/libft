@@ -1,36 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_print_string_fd.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 14:49:25 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/11/30 08:40:07 by cpalusze         ###   ########.fr       */
+/*   Created: 2022/11/15 13:29:07 by cpalusze          #+#    #+#             */
+/*   Updated: 2022/11/27 12:03:06 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+int	ft_print_string_fd(const char *str, int fd)
 {
-	int				i;
-	int				sign;
-	long long int	res;
-
-	i = 0;
-	sign = 1;
-	while (nptr[i] && ft_isspace(nptr[i]))
-		i++;
-	if (nptr[i] == '-')
+	if (str == NULL)
 	{
-		sign = -1;
-		i++;
+		ft_putstr_fd(NULL_STR, fd);
+		return ((int)ft_strlen(NULL_STR));
 	}
-	else if (nptr[i] == '+')
-		i++;
-	res = 0;
-	while (ft_isdigit(nptr[i]))
-		res = res * 10 + (nptr[i++] - '0');
-	return (res * sign);
+	ft_putstr_fd(str, fd);
+	return ((int)ft_strlen(str));
 }

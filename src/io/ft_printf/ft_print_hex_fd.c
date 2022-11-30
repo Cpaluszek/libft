@@ -1,36 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_print_hex_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/08 14:49:25 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/11/30 08:40:07 by cpalusze         ###   ########.fr       */
+/*   Created: 2022/11/27 12:00:42 by cpalusze          #+#    #+#             */
+/*   Updated: 2022/11/27 12:06:18 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *nptr)
+int	ft_print_lower_hex_fd(size_t nb, int fd)
 {
-	int				i;
-	int				sign;
-	long long int	res;
+	size_t	base_len;
 
-	i = 0;
-	sign = 1;
-	while (nptr[i] && ft_isspace(nptr[i]))
-		i++;
-	if (nptr[i] == '-')
-	{
-		sign = -1;
-		i++;
-	}
-	else if (nptr[i] == '+')
-		i++;
-	res = 0;
-	while (ft_isdigit(nptr[i]))
-		res = res * 10 + (nptr[i++] - '0');
-	return (res * sign);
+	base_len = ft_strlen(HEX_BASE_LOWER);
+	return (ft_print_size_t_base_fd(nb, HEX_BASE_LOWER, base_len, fd));
+}
+
+int	ft_print_upper_hex_fd(size_t nb, int fd)
+{
+	size_t	base_len;
+
+	base_len = ft_strlen(HEX_BASE_UPPER);
+	return (ft_print_size_t_base_fd(nb, HEX_BASE_UPPER, base_len, fd));
 }
