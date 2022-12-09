@@ -6,11 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 08:16:15 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/11/27 12:08:08 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:19:16 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
 int	ft_print_unsigned_int_fd(unsigned int nb, int fd)
 {

@@ -6,11 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:39:24 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/04 09:29:41 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:19:49 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 2048
 #endif

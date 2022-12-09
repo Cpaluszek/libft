@@ -6,11 +6,12 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/12 15:07:19 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/11/30 08:19:31 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:18:51 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
 int	ft_printf(const char *input, ...)
 {
