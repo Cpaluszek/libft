@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/16 11:39:24 by cpalusze          #+#    #+#             */
-/*   Updated: 2022/12/09 15:19:49 by cpalusze         ###   ########.fr       */
+/*   Updated: 2022/12/09 15:22:02 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static char	*read_file(int fd, char *buffer, size_t i);
 static char	*ft_join_to_buffer(char *buffer, char *read);
 static char	*ft_get_line(char *buffer);
 static char	*ft_remove_current_line(char *buffer);
+
+//Note: use ft_free()
 
 char	*get_next_line(int fd)
 {
