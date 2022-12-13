@@ -55,6 +55,7 @@ SRC			:= 	checker/ft_isalpha.c \
 				io/ft_printf/ft_print_unsigned_int_fd.c \
 				io/ft_printf/ft_printf_fd.c \
 				io/gnl/get_next_line.c \
+				utils/swap_int.c \
 				lst/ft_lstnew.c \
  				lst/ft_lstsize.c \
  			   	lst/ft_lstclear.c \
