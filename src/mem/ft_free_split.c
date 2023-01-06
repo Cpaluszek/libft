@@ -6,7 +6,7 @@
 /*   By: cpalusze <cpalusze@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/06 12:41:19 by cpalusze          #+#    #+#             */
-/*   Updated: 2023/01/06 12:42:41 by cpalusze         ###   ########.fr       */
+/*   Updated: 2023/01/06 12:44:17 by cpalusze         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void	ft_free_split(char **strs)
 
 	i = 0;
 	while (strs[i])
-		free(strs[i]);
+		free(strs[i++]);
 	free(strs);
 }
