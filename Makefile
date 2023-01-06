@@ -41,6 +41,7 @@ SRC			:= 	checker/ft_isalpha.c \
  			   	mem/ft_memchr.c \
  			   	mem/ft_memcmp.c \
 				mem/ft_free.c \
+				mem/ft_free_split.c \
  			   	io/ft_putchar_fd.c \
  			   	io/ft_putstr_fd.c \
  			   	io/ft_putendl_fd.c \
