@@ -28,6 +28,7 @@ SRC			:= 	checker/ft_isalpha.c \
  			   	str/ft_strnstr.c \
  			   	str/ft_substr.c \
  			   	str/ft_strjoin.c \
+				str/ft_strjoin_and_free.c \
  			   	str/ft_strtrim.c \
  			   	str/ft_split.c \
  			   	str/ft_itoa.c \
