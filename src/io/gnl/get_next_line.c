@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 #ifndef BUFFER_SIZE
 # define BUFFER_SIZE 2048
 #endif

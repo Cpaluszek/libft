@@ -14,6 +14,8 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <stdarg.h>
+# include <stdint.h>
+# include <unistd.h>
 # define NULL_STR "(null)"
 # define HEX_BASE_LOWER "0123456789abcdef"
 # define HEX_BASE_UPPER "0123456789ABCDEF"

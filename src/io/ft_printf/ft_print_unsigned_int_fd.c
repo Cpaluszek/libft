@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 
 int	ft_print_unsigned_int_fd(unsigned int nb, int fd)
 {
